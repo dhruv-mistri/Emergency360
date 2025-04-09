@@ -33,7 +33,7 @@ const EmergencyHeader = () => {
               onClick={() => (window.location.href = "tel:911")}
             >
               <Phone className="mr-2" size={20} />
-              Call 911
+              Call 108
             </Button>
             <Button
               variant="outline"

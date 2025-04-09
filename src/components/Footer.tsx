@@ -7,10 +7,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="text-xl font-bold mb-4">CruiseRent</h3>
+            <h3 className="text-xl font-bold mb-4">Emergency360</h3>
             <p className="text-gray-400 mb-6">
-              Premium vehicle rental services for business and leisure travel.
-              Experience the best in comfort and reliability.
+             🚑 Emergency 360 – Empowering faster emergency responses across India.
+  Smart ambulance allocation, real-time tracking & optimized routes for saving lives.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -56,19 +56,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Vehicle Types</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Economy Cars</a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">Basic Life Support (BLS) Ambulance</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">SUVs & Crossovers</a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">Patient Transport Vehicle (PTV)</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Luxury Vehicles</a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">Fire & Rescue Vehicle</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Convertibles</a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors"> Private Emergency Van</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Vans & Minibuses</a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">Police Escort / Response Vehicle</a>
               </li>
             </ul>
           </div>
@@ -81,24 +81,23 @@ const Footer = () => {
                   <MapPin size={20} />
                 </div>
                 <span className="text-gray-400">
-                  123 Rental Street, City Center<br />
-                  New York, NY 10001
+                  Agmedabad,Gujarat
                 </span>
               </li>
               <li className="flex items-center">
                 <div className="flex-shrink-0 text-primary mr-3">
                   <Phone size={20} />
                 </div>
-                <a href="tel:+1234567890" className="text-gray-400 hover:text-white transition-colors">
-                  +1 (234) 567-890
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  9712702006
                 </a>
               </li>
               <li className="flex items-center">
                 <div className="flex-shrink-0 text-primary mr-3">
                   <Mail size={20} />
                 </div>
-                <a href="mailto:info@cruiserent.com" className="text-gray-400 hover:text-white transition-colors">
-                  info@cruiserent.com
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  Emergency360.com
                 </a>
               </li>
             </ul>

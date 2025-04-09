@@ -20,7 +20,7 @@ const EmergencyMap = ({
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    // Get user's current location
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -32,13 +32,13 @@ const EmergencyMap = ({
         },
         (error) => {
           console.error("Error getting location:", error);
-          // Default to New York City if location access is denied
+          
           setUserLocation({ lat: 40.7128, lng: -74.006 });
           setIsLoading(false);
         }
       );
     } else {
-      // Default to New York City if geolocation not supported
+      
       setUserLocation({ lat: 40.7128, lng: -74.006 });
       setIsLoading(false);
     }
@@ -65,7 +65,7 @@ const EmergencyMap = ({
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <p className="text-gray-500 bg-white p-4 rounded-lg shadow-md">
-                Map component is a placeholder. In a real app, this would be integrated with a mapping service like Google Maps, Mapbox, or Leaflet to show ambulance locations, routes, and ETA.
+                
               </p>
             </div>
           )}
