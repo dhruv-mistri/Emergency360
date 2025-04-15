@@ -2,14 +2,18 @@ import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { getDistance } from "geolib"; // Import geolib for distance calculation
 
 const EmergencyMap = () => {
-  // User location state
-  const [userLocation, setUserLocation] = useState(null); // Initially null
-  const [vehicles, setVehicles] = useState([]); // Vehicle data
+  const [userLocation, setUserLocation] = useState({
+    lat: 22.9759,
+    lng: 72.602,
+  }); 
+  const [vehicles, setVehicles] = useState([
+    { id: 1, lat: 22.9765, lng: 72.6155, type: "Ambulance" },
+  ]);
 
   useEffect(() => {
-    // Get user's current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -20,65 +24,106 @@ const EmergencyMap = () => {
         },
         (error) => {
           console.error("Error getting location:", error);
-          // Fallback to a default location (e.g., Delhi)
-          setUserLocation({ lat: 28.6139, lng: 77.209 });
         }
       );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-      // Fallback to a default location
-      setUserLocation({ lat: 28.6139, lng: 77.209 });
     }
   }, []);
 
-  // Custom icons for vehicles and user
-  const vehicleIcon = new L.Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/2967/2967350.png", // Replace with a taxi icon if needed
+  // Custom icon for the user (person icon)
+  const userIcon = new L.Icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/1995/1995574.png", // Person icon
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],
   });
 
-  const userIcon = new L.Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // User location icon
+  // Custom icon for the vehicle (ambulance car icon)
+  const vehicleIcon = new L.Icon({
+    iconUrl: "/medical.png", // Ambulance car icon
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],
   });
+
+  const updateVehicleLocation = () => {
+    if (!userLocation) {
+      console.error("User location is not available.");
+      return;
+    }
+
+    const newVehicles = vehicles.map((vehicle) => ({
+      ...vehicle,
+      lat: userLocation.lat + (Math.random() - 0.5) * 0.01,
+      lng: userLocation.lng + (Math.random() - 0.5) * 0.01,
+    }));
+
+    setVehicles(newVehicles);
+  };
+
+  // Function to calculate distance between user and vehicle
+  const calculateDistance = (vehicleLat, vehicleLng) => {
+    const distance = getDistance(
+      { latitude: userLocation.lat, longitude: userLocation.lng },
+      { latitude: vehicleLat, longitude: vehicleLng }
+    );
+    return (distance / 1000).toFixed(2); // Convert to kilometers and round to 2 decimal places
+  };
 
   return (
-    <MapContainer
-      center={userLocation || { lat: 20.5937, lng: 78.9629 }} // Center on user location or India
-      zoom={userLocation ? 13 : 5} // Zoom in if user location is available
-      style={{ height: "500px", width: "100%" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
+    <div>
+      {/* <button
+        onClick={updateVehicleLocation}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          zIndex: 1000,
+          padding: "10px",
+          backgroundColor: "blue",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Update Vehicle Location
+      </button> */}
 
-      {/* User location marker */}
-      {userLocation && (
-        <Marker position={userLocation} icon={userIcon}>
-          <Popup>Your Current Location</Popup>
-        </Marker>
-      )}
+      <MapContainer
+        center={userLocation}
+        zoom={13}
+        style={{ height: "500px", width: "100%" }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
 
-      {/* Vehicle markers */}
-      {vehicles.map((vehicle) => (
-        <Marker
-          key={vehicle.id}
-          position={{ lat: vehicle.lat, lng: vehicle.lng }}
-          icon={vehicleIcon}
-        >
-          <Popup>
-            Vehicle ID: {vehicle.id}
-            <br />
-            Type: {vehicle.type}
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+        {/* User location marker */}
+        {userLocation && (
+          <Marker position={userLocation} icon={userIcon}>
+            <Popup>Your Current Location</Popup>
+          </Marker>
+        )}
+
+        {/* Vehicle markers */}
+        {vehicles.map((vehicle) => (
+          <Marker
+            key={vehicle.id}
+            position={{ lat: vehicle.lat, lng: vehicle.lng }}
+            icon={vehicleIcon}
+          >
+            <Popup>
+              Vehicle ID: {vehicle.id}
+              <br />
+              Type: {vehicle.type}
+              <br />
+              Distance: {calculateDistance(vehicle.lat, vehicle.lng)} km
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
   );
 };
 

@@ -22,3 +22,40 @@ url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 Geolocation API:
 The browser's built-in Geolocation API is used to fetch the user's location. This does not require any API key.
+
+
+To create a route line between the user and the vehicle:
+. Installed leaflet-routing-machine
+We installed the leaflet-routing-machine library, which is used to calculate and display routes on a Leaflet map.
+
+
+We created a separate Routing component to handle the routing logic.
+This component:
+Uses the useMap hook from react-leaflet to access the Leaflet map instance.
+Adds a routing control to the map using
+
+Added Waypoints
+The Routing component dynamically calculates the route between the user's location and the vehicle's location.
+We used the waypoints property of L.Routing.control to define the start and end points of the route:
+ L.latLng(userLocation.lat, userLocation.lng), // User's location
+  L.latLng(vehicleLocation.lat, vehicleLocation.lng), // Vehicle's location
+
+Summary of What We Did
+Installed leaflet-routing-machine.
+Created a Routing component to handle route calculations.
+Used L.Routing.control to define waypoints between the user and the vehicle.
+Added the routing control to the map.
+Cleaned up the routing control on component unmount.
+Integrated the Routing component into the main EmergencyMap component.
+
+
+To calculate the distance between user and ambulance:
+Install geolib (Optional):
+
+If you want to use a library to calculate the distance
+Calculate the Distance:
+
+Use the geolib library or the Haversine formula to calculate the distance between the user's location and the ambulance's location.
+Display the Distance:
+
+Show the calculated distance in the Popup of the ambulance marker.
