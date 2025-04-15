@@ -1,0 +1,24 @@
+1. What Was Done to Implement the Map
+OpenStreetMap:
+
+OpenStreetMap is a free and open-source map service. It does not require an API key, unlike Google Maps.
+The map tiles are loaded using the TileLayer component from react-leaflet.
+React-Leaflet:
+
+The react-leaflet library is used to integrate OpenStreetMap into your React application.
+Components like MapContainer, TileLayer, Marker, and Popup are used to render the map and markers.
+Geolocation API:
+
+The browser's built-in Geolocation API (navigator.geolocation) is used to fetch the user's current location dynamically.
+If the user denies location access or the browser does not support geolocation, a fallback location (e.g., Delhi) is used.
+Custom Icons:
+
+Custom icons for the user and vehicles are created using the L.Icon class from the leaflet library.
+
+
+
+What we have use to implement this API:
+url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+Geolocation API:
+The browser's built-in Geolocation API is used to fetch the user's location. This does not require any API key.
