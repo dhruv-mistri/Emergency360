@@ -15,6 +15,13 @@ const EmergencyHeader = () => {
     };
   }, []);
 
+  const getGreeting = () => {
+    const hour = currentTime.getHours();
+    if (hour < 12) return "Good Morning";
+    if (hour < 18) return "Good Afternoon";
+    return "Good Evening";
+  };
+
   return (
     <div className="bg-red-600 text-white py-8">
       <div className="container mx-auto px-4">
@@ -23,6 +30,9 @@ const EmergencyHeader = () => {
             <Ambulance size={32} />
             <h1 className="text-3xl font-bold">Emergency 360</h1>
           </div>
+          <p className="text-lg mb-4">
+            {getGreeting()}, Welcome to Emergency 360!
+          </p>
           <p className="text-lg mb-4">
             Fast emergency ambulance service at your fingertips
           </p>

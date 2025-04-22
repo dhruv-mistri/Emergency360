@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Ambulance, Phone } from "lucide-react";
@@ -15,7 +14,11 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-red-600 flex items-center">
+            {/* Link to the Home Page */}
+            <a
+              href="/"
+              className="text-2xl font-bold text-red-600 flex items-center"
+            >
               <Ambulance className="mr-2" />
               Emergency 360
             </a>
@@ -23,25 +26,42 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="/" className="text-foreground hover:text-red-600 font-medium">
+            {/* Link to Home Section */}
+            <a
+              href="/"
+              className="text-foreground hover:text-red-600 font-medium"
+            >
               Home
             </a>
-            <a href="#emergency" className="text-foreground hover:text-red-600 font-medium">
+            {/* Link to Emergency Section */}
+            <a
+              href="#emergency"
+              className="text-foreground hover:text-red-600 font-medium"
+            >
               Emergency
             </a>
-            <a href="#services" className="text-foreground hover:text-red-600 font-medium">
+            {/* Link to Services Section */}
+            <a
+              href="#services"
+              className="text-foreground hover:text-red-600 font-medium"
+            >
               Services
             </a>
-            <a href="#about" className="text-foreground hover:text-red-600 font-medium">
+            {/* Link to About Us Section */}
+            <a
+              href="#about"
+              className="text-foreground hover:text-red-600 font-medium"
+            >
               About Us
             </a>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              variant="outline" 
+            {/* Emergency Call Button */}
+            <Button
+              variant="outline"
               className="border-red-600 text-red-600 hover:bg-red-50"
-              onClick={() => window.location.href = "tel:911"}
+              onClick={() => (window.location.href = "tel:911")}
             >
               <Phone size={18} className="mr-1" />
               Emergency
@@ -60,22 +80,39 @@ const Header = () => {
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
-              <a href="/" className="text-foreground hover:text-red-600 font-medium py-2">
+              {/* Link to Home Section */}
+              <a
+                href="/"
+                className="text-foreground hover:text-red-600 font-medium py-2"
+              >
                 Home
               </a>
-              <a href="#emergency" className="text-foreground hover:text-red-600 font-medium py-2">
+              {/* Link to Emergency Section */}
+              <a
+                href="#emergency"
+                className="text-foreground hover:text-red-600 font-medium py-2"
+              >
                 Emergency
               </a>
-              <a href="#services" className="text-foreground hover:text-red-600 font-medium py-2">
+              {/* Link to Services Section */}
+              <a
+                href="#services"
+                className="text-foreground hover:text-red-600 font-medium py-2"
+              >
                 Services
               </a>
-              <a href="#about" className="text-foreground hover:text-red-600 font-medium py-2">
+              {/* Link to About Us Section */}
+              <a
+                href="#about"
+                className="text-foreground hover:text-red-600 font-medium py-2"
+              >
                 About Us
               </a>
               <div className="flex flex-col space-y-3 pt-2">
-                <Button 
+                {/* Emergency Call Button */}
+                <Button
                   className="w-full bg-red-600 hover:bg-red-700"
-                  onClick={() => window.location.href = "tel:911"}
+                  onClick={() => (window.location.href = "tel:911")}
                 >
                   <Phone size={18} className="mr-1" />
                   Call Emergency

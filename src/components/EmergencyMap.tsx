@@ -6,7 +6,7 @@ import { getDistance } from "geolib"; // Import geolib for distance calculation
 
 const EmergencyMap = () => {
   const [userLocation, setUserLocation] = useState({
-    lat: 22.9759,
+    lat: 22.9739,
     lng: 72.602,
   }); 
   const [vehicles, setVehicles] = useState([
@@ -71,23 +71,6 @@ const EmergencyMap = () => {
 
   return (
     <div>
-      {/* <button
-        onClick={updateVehicleLocation}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          zIndex: 1000,
-          padding: "10px",
-          backgroundColor: "blue",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Update Vehicle Location
-      </button> */}
 
       <MapContainer
         center={userLocation}
